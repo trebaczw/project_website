@@ -40,17 +40,22 @@ const defaultTheme = createTheme({
 			dark: "#4d6ad0",
 			contrastText: "#000000",
 		},
-        secondary: {
+		secondary: {
 			light: "#ffa28a",
 			main: "#ff795b",
 			dark: "#ff5436",
 			contrastText: "#000000",
 		},
-		
 	},
 });
 
-export default function Album() {
+type postDowladerProps = {
+	data: {
+		name: string;
+	}[];
+};
+export default function Album({ data }: postDowladerProps) {
+	console.log(data?.[0].name);
 	return (
 		<ThemeProvider theme={defaultTheme}>
 			<CssBaseline />

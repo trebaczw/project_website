@@ -15,6 +15,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+// import { createIndexedAccessTypeNode } from "typescript";
 
 function Copyright() {
 	return (
@@ -29,8 +30,7 @@ function Copyright() {
 	);
 }
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
+// const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme({
 	palette: {
@@ -52,10 +52,14 @@ const defaultTheme = createTheme({
 type postDowladerProps = {
 	data: {
 		name: string;
+		image?: string;
+		homeworld?: string;
+		wiki?: string;
 	}[];
 };
 export default function Album({ data }: postDowladerProps) {
-	console.log(data?.[0].name);
+	console.log(data?.[5]);
+
 	return (
 		<ThemeProvider theme={defaultTheme}>
 			<CssBaseline />
@@ -110,8 +114,8 @@ export default function Album({ data }: postDowladerProps) {
 				<Container sx={{ py: 8 }} maxWidth="md">
 					{/* End hero unit */}
 					<Grid container spacing={4}>
-						{cards.map((card) => (
-							<Grid item key={card} xs={12} sm={6} md={4}>
+						{data.map((item, index) => (
+							<Grid item key={index} xs={12} sm={6} md={4}>
 								<Card
 									sx={{
 										height: "100%",
@@ -125,20 +129,22 @@ export default function Album({ data }: postDowladerProps) {
 											// 16:9
 											pt: "56.25%",
 										}}
-										image="https://source.unsplash.com/random?wallpapers"
+										image={item.image}
 									/>
 									<CardContent sx={{ flexGrow: 1 }}>
 										<Typography gutterBottom variant="h5" component="h2">
-											Heading
+											{item.name}
 										</Typography>
-										<Typography>
-											This is a media card. You can use this section to describe
-											the content.
-										</Typography>
+										<Typography> Homerword: {item.homeworld}</Typography>
 									</CardContent>
 									<CardActions>
-										<Button size="small">View</Button>
-										<Button size="small">Edit</Button>
+										<a
+											href={item.wiki}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											<Button size="small">View</Button>
+										</a>
 									</CardActions>
 								</Card>
 							</Grid>

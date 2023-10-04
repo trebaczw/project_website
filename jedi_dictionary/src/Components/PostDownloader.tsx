@@ -2,15 +2,9 @@ import React, { useState, useEffect } from "react";
 
 type postDowladerProps = {
 	setData: React.Dispatch<
-		React.SetStateAction<
-			{
-				name: string;
-			}[]
-		>
+		React.SetStateAction<{ name: string; }[]>
 	>;
-	data: {
-		name: string;
-	}[];
+	data: { name: string;}[];
 };
 
 export const PostDownloader = ({ data, setData }: postDowladerProps) => {

@@ -161,7 +161,7 @@ export default function Album({ data }: postDowladerProps) {
 					color="text.secondary"
 					component="p"
 				>
-					Something here to give the footer a purpose!
+					Something here to give the footer a purpose! 
 				</Typography>
 				<Copyright />
 			</Box>

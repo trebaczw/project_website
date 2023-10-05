@@ -15,6 +15,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import {Link as LinkRouter} from "react-router-dom"
 // import { createIndexedAccessTypeNode } from "typescript";
 
 function Copyright() {
@@ -55,10 +56,11 @@ type postDowladerProps = {
 		image?: string;
 		homeworld?: string;
 		wiki?: string;
+		id?:string
 	}[];
 };
 export default function Album({ data }: postDowladerProps) {
-	console.log(data?.[5]);
+	console.log(data?.slice(0, 6));
 
 	return (
 		<ThemeProvider theme={defaultTheme}>
@@ -114,7 +116,7 @@ export default function Album({ data }: postDowladerProps) {
 				<Container sx={{ py: 8 }} maxWidth="md">
 					{/* End hero unit */}
 					<Grid container spacing={4}>
-						{data.map((item, index) => (
+						{data.slice(0,15).map((item, index) => (
 							<Grid item key={index} xs={12} sm={6} md={4}>
 								<Card
 									sx={{
@@ -138,13 +140,9 @@ export default function Album({ data }: postDowladerProps) {
 										<Typography> Homerword: {item.homeworld}</Typography>
 									</CardContent>
 									<CardActions>
-										<a
-											href={item.wiki}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
+										<LinkRouter to={`/${item.id}`}>
 											<Button size="small">View</Button>
-										</a>
+											</LinkRouter>
 									</CardActions>
 								</Card>
 							</Grid>
